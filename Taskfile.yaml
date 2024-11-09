@@ -1,0 +1,61 @@
+---
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  default:
+    desc: "List all available tasks"
+    cmds:
+      - task --list-all
+    silent: true
+
+  lint:
+    desc: "Lint all files"
+    cmds:
+      - task yamllint
+    silent: true
+
+  yamllint:
+    desc: "Lint all YAML files"
+    cmds:
+      - docker run --rm -v $(pwd):/data cytopia/yamllint -f colored -c yamllint.yaml .
+    silent: true
+
+  build-otel-collector:
+    desc: "Build the OpenTelemetry Collector"
+    cmds:
+      - docker build -t otel-collector -f Dockerfile .
+    silent: true
+
+  build-otel-collector-debug:
+    desc: "Build the OpenTelemetry Collector with debug configuration"
+    cmds:
+      - docker build --target otel-collector-debug  -t otel-collector-debug -f Dockerfile .
+    silent: true
+
+  run-otel-collector:
+    desc: "Run the OpenTelemetry Collector"
+    cmds:
+      - |
+        docker run \
+        -e GRAFANA_CLOUD_OTLP_ENDPOINT=https://foo.bar \
+        -e GRAFANA_CLOUD_API_KEY=pleasedonthackme \
+        -e GRAFANA_CLOUD_INSTANCE_ID=1337 \
+        -p 4317:4317 \
+        -p 4318:4318 \
+        --rm otel-collector
+    silent: true
+
+  run-otel-collector-debug:
+    desc: "Run the OpenTelemetry Collector"
+    cmds:
+      - |
+        docker run \
+        -e GRAFANA_CLOUD_OTLP_ENDPOINT=https://foo.bar \
+        -e GRAFANA_CLOUD_API_KEY=pleasedonthackme \
+        -e GRAFANA_CLOUD_INSTANCE_ID=1337 \
+        -p 4317:4317 \
+        -p 4318:4318 \
+        --rm otel-collector-debug
+    silent: true

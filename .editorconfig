@@ -1,0 +1,25 @@
+# EditorConfig is awesome: http://EditorConfig.org
+# Install proper plugin for your IDE to enable this config
+#
+# Check for all possible configuration keys
+#   https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties
+
+# Top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+indent_style = space
+indent_size = 4
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# Additional for YAML/JSON files only
+[*.{yml,yaml,json,neon}]
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = 80
