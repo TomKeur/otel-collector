@@ -31,7 +31,7 @@ tasks:
   build-otel-collector-debug:
     desc: "Build the OpenTelemetry Collector with debug configuration"
     cmds:
-      - docker build --target otel-collector-debug  -t otel-collector-debug -f Dockerfile .
+      - docker build --target otel-collector-debug -t otel-collector-debug -f Dockerfile .
     silent: true
 
   run-otel-collector:
