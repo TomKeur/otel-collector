@@ -12,3 +12,7 @@ GRAFANA_CLOUD_OTLP_ENDPOINT
 There are two available versions: `contrib` and `debug`
 
 With debug you will get extra information, great for debugging if traces/ogs are not coming in.
+
+## Image on Docker Hub
+
+https://hub.docker.com/r/tomkeur/otel-collector
