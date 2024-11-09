@@ -31,7 +31,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           target: otel-collector-contrib
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/otel-collector:${{ vars.VERSION }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/otel-collector:${{ vars.VERSION }}
 
       - name: Build and push debug image
         uses: docker/build-push-action@v6
@@ -39,4 +39,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           target: otel-collector-contrib-debug
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/otel-collector:${{ vars.VERSION }}-debug
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/otel-collector:${{ vars.VERSION }}-debug
