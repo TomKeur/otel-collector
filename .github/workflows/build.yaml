@@ -37,6 +37,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           platforms: linux/amd64,linux/arm64
-          target: otel-collector-contrib-debug
+          target: otel-collector-debug
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/otel-collector:${{ vars.VERSION }}-debug
